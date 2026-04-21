@@ -612,7 +612,7 @@ td.mono{font-family:${T.mono};font-size:12px;color:${T.ink3}}
 /* ═══════════════════════════════════════════════════════════════
    COMPREHENSIVE MOBILE RESPONSIVENESS
    Scales every section, card, grid, and spacing down for phones.
-   Desktop layout is untouched — these only fire below breakpoints.
+   Desktop layout is untouched - these only fire below breakpoints.
 ═══════════════════════════════════════════════════════════════ */
 
 /* ─── CARD PADDING ─── */
