@@ -826,16 +826,25 @@ td.mono{font-family:${T.mono};font-size:12px;color:${T.ink3}}
   .g2{gap:clamp(8px,2vw,16px) !important}
   .g3{gap:clamp(6px,1.5vw,12px) !important}
   .g4{gap:clamp(6px,1.5vw,12px) !important}
-  /* Non-pricing g3 grids go 2-col on phones; pricing stays 3-col */
+  /* Non-pricing g3 grids go 2-col on phones */
   .g3:not(.pricing-grid){grid-template-columns:1fr 1fr !important}
+  /* Pricing: 1-col on mobile for readability */
+  .pricing-grid{grid-template-columns:1fr !important;gap:16px !important}
+  .pricing-grid .pricing-v2{padding:24px 22px !important}
+  .pricing-grid .pc-name{font-size:24px !important}
+  .pricing-grid .pc-price{font-size:44px !important}
+  .pricing-grid .pc-tag{font-size:13px !important;margin-bottom:22px !important}
+  .pricing-grid .pc-features li{font-size:13px !important;margin-bottom:9px !important}
+  .pricing-grid .pc-divider{margin-bottom:18px !important}
+  .pricing-grid .pc-price-block{margin-bottom:22px !important}
 }
 @media(max-width:420px){
   .g2{gap:6px !important}
   .g3{gap:5px !important}
   .g4{gap:5px !important}
   .g3:not(.pricing-grid){grid-template-columns:1fr !important}
-  /* Keep pricing always 3-col */
-  .pricing-grid{grid-template-columns:repeat(3,1fr) !important;gap:5px !important}
+  .pricing-grid{grid-template-columns:1fr !important;gap:14px !important}
+  .pricing-grid .pricing-v2{padding:22px 18px !important}
 }
 
 /* ─── STAT / HERO GRID ─── */
