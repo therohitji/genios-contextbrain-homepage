@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "node generate-sitemap.mjs && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "react": "^18.3.1",
