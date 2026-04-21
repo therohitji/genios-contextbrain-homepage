@@ -764,17 +764,15 @@ td.mono{font-family:${T.mono};font-size:12px;color:${T.ink3}}
   .btn-lg{padding:13px 20px !important;font-size:11px !important;letter-spacing:0.14em !important}
   .btn-md{padding:11px 16px !important;font-size:10px !important}
 }
-/* Pricing card CTAs: wrap + compress on mobile */
+/* Pricing card CTAs: full-width on mobile */
 @media(max-width:640px){
   .pricing-grid .btn{
     white-space:normal !important;
     text-align:center !important;
     justify-content:center !important;
-    line-height:1.35 !important;
-    font-size:8px !important;
-    padding:8px 6px !important;
-    gap:3px !important;
-    letter-spacing:0.1em !important;
+    line-height:1.4 !important;
+    font-size:12px !important;
+    padding:12px 16px !important;
     width:100% !important;
   }
 }
@@ -798,27 +796,6 @@ td.mono{font-family:${T.mono};font-size:12px;color:${T.ink3}}
   .pricing-v2{padding:20px 14px !important}
   .pc-badge{top:10px !important;right:10px !important}
   .pc-badge span{font-size:8px !important;padding:4px 8px !important}
-}
-@media(max-width:640px){
-  .pc-name{font-size:15px !important}
-  .pc-price{font-size:26px !important}
-  .pc-tag{font-size:9.5px !important;margin-bottom:10px !important}
-  .pc-no{font-size:8px !important;margin-bottom:7px !important}
-  .pricing-v2{padding:12px 9px !important;border-radius:10px !important}
-  .pc-price-block{margin-bottom:12px !important}
-  .pc-price-row{margin-bottom:4px !important;gap:3px !important}
-  .pc-divider{margin-bottom:10px !important}
-  .pc-features{margin-bottom:10px !important}
-  .pc-features li{margin-bottom:5px !important;font-size:10.5px !important;gap:5px !important;line-height:1.4 !important}
-  .pc-features li span{font-size:9px !important;margin-top:1px !important}
-}
-@media(max-width:420px){
-  .pc-name{font-size:12px !important}
-  .pc-price{font-size:20px !important}
-  .pc-tag{font-size:8.5px !important}
-  .pricing-v2{padding:8px 6px !important}
-  .pc-price-block{margin-bottom:8px !important}
-  .pc-features li{font-size:9.5px !important;margin-bottom:4px !important}
 }
 
 /* ─── G2 / G3 GAP SCALING ─── */
@@ -844,7 +821,13 @@ td.mono{font-family:${T.mono};font-size:12px;color:${T.ink3}}
   .g4{gap:5px !important}
   .g3:not(.pricing-grid){grid-template-columns:1fr !important}
   .pricing-grid{grid-template-columns:1fr !important;gap:14px !important}
-  .pricing-grid .pricing-v2{padding:22px 18px !important}
+  .pricing-grid .pricing-v2{padding:20px 18px !important}
+  .pricing-grid .pc-name{font-size:20px !important}
+  .pricing-grid .pc-price{font-size:36px !important}
+  .pricing-grid .pc-tag{font-size:11px !important;margin-bottom:16px !important}
+  .pricing-grid .pc-features li{font-size:12px !important;margin-bottom:7px !important}
+  .pricing-grid .pc-price-block{margin-bottom:16px !important}
+  .pricing-grid .btn{font-size:11px !important;padding:11px 14px !important}
 }
 
 /* ─── STAT / HERO GRID ─── */
@@ -934,8 +917,13 @@ td.mono{font-family:${T.mono};font-size:12px;color:${T.ink3}}
   .trusted-label{display:none !important}
 }
 /* ─── PRICING COHORT PILL ─── */
+@media(max-width:640px){
+  .cohort-pill{flex-direction:column !important;gap:8px !important;padding:16px 18px !important}
+  .cohort-pill span:last-child{font-size:13px !important;text-align:center !important}
+}
 @media(max-width:420px){
-  .cohort-pill span:last-child{font-size:12.5px !important}
+  .cohort-pill{padding:14px 14px !important}
+  .cohort-pill span:last-child{font-size:12px !important}
 }
 
 /* ─── HERO CHIPS AT 640px ─── */
@@ -5443,9 +5431,6 @@ const PricingCard = ({ no, name, tag, price, original, popular, features, cta, f
   ? <span style={{ fontFamily: T.mono, fontSize: 11, color: T.stone, textDecoration: "line-through" }}>${price}/mo</span>
   : original && <span style={{ fontFamily: T.mono, fontSize: 11, color: T.stone, textDecoration: "line-through" }}>${original}/mo</span>
   }
-  <span style={{ fontFamily: T.mono, fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", color: T.brass, background: "rgba(176,137,70,0.08)", border: `0.5px solid ${T.brass}`, padding: "3px 9px", borderRadius: 100 }}>
-  {founding ? "Founding Customer" : "Early Pricing"}
-  </span>
   </div>
   </div>
   ) : (
@@ -5520,11 +5505,11 @@ const Pricing = () => {
   </div>
 
   {/* Cohort banner */}
-  <div className="cohort-pill" style={{ display: "inline-flex", alignItems: "center", gap: 14, flexWrap: "wrap", justifyContent: "center", background: "rgba(176,137,70,0.06)", border: `0.5px solid ${T.brass}`, borderRadius: 100, padding: "10px 22px 10px 14px", marginBottom: 48 }}>
-  <span style={{ background: T.brass, color: T.paper, fontFamily: T.mono, fontSize: 9, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase", padding: "5px 12px", borderRadius: 100 }}>
+  <div className="cohort-pill" style={{ display: "flex", alignItems: "center", gap: 12, justifyContent: "center", background: "rgba(176,137,70,0.06)", border: `0.5px solid ${T.brass}`, borderRadius: 14, padding: "12px 20px", marginBottom: 40, textAlign: "center" }}>
+  <span style={{ background: T.brass, color: T.paper, fontFamily: T.mono, fontSize: 9, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase", padding: "5px 12px", borderRadius: 100, flexShrink: 0 }}>
   Founding Customers
   </span>
-  <span style={{ fontFamily: T.body, fontSize: 14, fontWeight: 400, color: T.ink2 }}>
+  <span style={{ fontFamily: T.body, fontSize: 13.5, fontWeight: 400, color: T.ink2, lineHeight: 1.4 }}>
   50% off until 2030  -  <strong style={{ color: T.brass, fontWeight: 600 }}>let’s build towards AGI together.</strong>
   </span>
   </div>
