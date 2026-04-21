@@ -787,6 +787,10 @@ td.mono{font-family:${T.mono};font-size:12px;color:${T.ink3}}
   .sol-radial-grid > *:last-child{padding-left:0 !important}
 }
 
+/* ─── PRICING GRID LAYOUT ─── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.pricing-toggle{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:40px;flex-wrap:wrap;row-gap:10px}
+
 /* ─── PRICING CARD SCALING ─── */
 @media(max-width:900px){
   .pc-name{font-size:22px !important}
@@ -801,33 +805,36 @@ td.mono{font-family:${T.mono};font-size:12px;color:${T.ink3}}
 /* ─── G2 / G3 GAP SCALING ─── */
 @media(max-width:640px){
   .g2{gap:clamp(8px,2vw,16px) !important}
-  .g3{gap:clamp(6px,1.5vw,12px) !important}
+  .g3{gap:clamp(6px,1.5vw,12px) !important;grid-template-columns:1fr 1fr !important}
   .g4{gap:clamp(6px,1.5vw,12px) !important}
-  /* Non-pricing g3 grids go 2-col on phones */
-  .g3:not(.pricing-grid){grid-template-columns:1fr 1fr !important}
-  /* Pricing: 1-col on mobile for readability */
-  .pricing-grid{grid-template-columns:1fr !important;gap:16px !important}
-  .pricing-grid .pricing-v2{padding:24px 22px !important}
-  .pricing-grid .pc-name{font-size:24px !important}
-  .pricing-grid .pc-price{font-size:44px !important}
-  .pricing-grid .pc-tag{font-size:13px !important;margin-bottom:22px !important}
-  .pricing-grid .pc-features li{font-size:13px !important;margin-bottom:9px !important}
-  .pricing-grid .pc-divider{margin-bottom:18px !important}
-  .pricing-grid .pc-price-block{margin-bottom:22px !important}
 }
 @media(max-width:420px){
   .g2{gap:6px !important}
-  .g3{gap:5px !important}
+  .g3{gap:5px !important;grid-template-columns:1fr !important}
   .g4{gap:5px !important}
-  .g3:not(.pricing-grid){grid-template-columns:1fr !important}
-  .pricing-grid{grid-template-columns:1fr !important;gap:14px !important}
-  .pricing-grid .pricing-v2{padding:20px 18px !important}
-  .pricing-grid .pc-name{font-size:20px !important}
-  .pricing-grid .pc-price{font-size:36px !important}
-  .pricing-grid .pc-tag{font-size:11px !important;margin-bottom:16px !important}
-  .pricing-grid .pc-features li{font-size:12px !important;margin-bottom:7px !important}
-  .pricing-grid .pc-price-block{margin-bottom:16px !important}
-  .pricing-grid .btn{font-size:11px !important;padding:11px 14px !important}
+}
+
+/* ─── PRICING GRID MOBILE ─── */
+@media(max-width:640px){
+  .pricing-grid{grid-template-columns:1fr;gap:16px}
+  .pricing-grid .pricing-v2{padding:24px 22px}
+  .pricing-grid .pc-name{font-size:24px}
+  .pricing-grid .pc-price{font-size:44px}
+  .pricing-grid .pc-tag{font-size:13px;margin-bottom:22px}
+  .pricing-grid .pc-features li{font-size:13px;margin-bottom:9px}
+  .pricing-grid .pc-divider{margin-bottom:18px}
+  .pricing-grid .pc-price-block{margin-bottom:22px}
+  .pricing-grid .btn{font-size:12px;padding:12px 16px;width:100%;justify-content:center;white-space:normal;text-align:center;line-height:1.4}
+}
+@media(max-width:420px){
+  .pricing-grid{gap:14px}
+  .pricing-grid .pricing-v2{padding:20px 18px}
+  .pricing-grid .pc-name{font-size:20px}
+  .pricing-grid .pc-price{font-size:36px}
+  .pricing-grid .pc-tag{font-size:11px;margin-bottom:16px}
+  .pricing-grid .pc-features li{font-size:12px;margin-bottom:7px}
+  .pricing-grid .pc-price-block{margin-bottom:16px}
+  .pricing-grid .btn{font-size:11px;padding:11px 14px}
 }
 
 /* ─── STAT / HERO GRID ─── */
@@ -5490,7 +5497,7 @@ const Pricing = () => {
   </Kicker>
 
   {/* Founding Customer toggle */}
-  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 14, marginBottom: 40 }}>
+  <div className="pricing-toggle">
   <span style={{ fontFamily: T.mono, fontSize: 12, color: founding ? T.stone : T.ink, letterSpacing: "0.08em" }}>Regular</span>
   <button
   onClick={() => setFounding(f => !f)}
@@ -5514,7 +5521,7 @@ const Pricing = () => {
   </span>
   </div>
 
-  <div className="g3 pricing-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24, alignItems: "stretch" }}>
+  <div className="pricing-grid">
   {PRICING_TIERS.map((tier) => <PricingCard key={tier.id} {...tier} annual={annual} founding={founding} />)}
   </div>
 
@@ -9390,3 +9397,4 @@ export default function DemoNavy() {
   </>
   );
 }
+/* CACHEBUST_TEST */
